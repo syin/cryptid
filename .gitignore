@@ -1,0 +1,4 @@
+node_modules/
+static/output/
+static/styles/.sass-cache/
+*.pyc

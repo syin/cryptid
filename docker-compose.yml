@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  flask:
+    build:
+      context: .
+      dockerfile: ./docker/flask/Dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      - .:/code
+    environment:
+      - VIRTUAL_HOST=cryptid.shirleyyin.com
+      - FLASK_ENV=development
+    restart: always
+
+  webpack:
+    build:
+      context: .
+      dockerfile: ./docker/node/Dockerfile
+    command: npm run build
+    volumes:
+      - .:/code
+    restart: always
+
+networks:
+  default:
+    external:
+      name: nginx-proxy_default

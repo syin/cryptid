@@ -1,0 +1,1 @@
+# cryptid: privacy-focused analytics
