@@ -2,12 +2,15 @@ const path = require('path')
 const webpack = require('webpack')
 
 module.exports = {
-  entry: './static/src/js/main.js',
+  entry: {
+    index: './static/src/js/main.js',
+    lib: './static/src/js/cryptidlib.js'
+  },
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'static/dist'),
     publicPath: './static/dist',
-    filename: 'bundle.js'
+    filename: '[name].bundle.js'
   },
   devtool: 'inline',
   module: {

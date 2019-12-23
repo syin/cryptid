@@ -8,4 +8,4 @@ WORKDIR /code
 
 # TODO SY 4 workers in prod only
 # CMD ["gunicorn", "-w 4", "-b 0.0.0.0:8001", "server:app"]
-CMD ["gunicorn", "-b 0.0.0.0:8001", "server:app"]
+CMD ["gunicorn", "-b 0.0.0.0:8001", "server:app", "--reload"]
