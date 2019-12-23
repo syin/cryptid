@@ -18,7 +18,45 @@
       <h2 class="website-name">My Website - https://mywebsite.com</h2>
       <h3>pages - /blog</h3>
 
-      [insert graphs here]
+      <div each={ visit in state.visits }>
+        { visit.user } { visit.visits }
+      </div>
     </main>
   </div>
+
+  <script>
+    import axios from 'axios'
+
+    export default {
+      state: {
+        visits: []
+      },
+      // add(e) {
+      //   e.preventDefault()
+
+      //   this.update()
+
+      //   input.value = ''
+      // }
+
+      onMounted() {
+        this.get_visits()
+      },
+
+      get_visits() {
+        const apiHost = ''
+        axios
+        .get(`${apiHost}/api/log/`)
+        .then(response => {
+          console.log('get visits', response)
+          this.update({
+            visits: [
+              ...response.data
+            ],
+          })
+          console.log('state', this.state)
+        })
+      }
+    }
+  </script>
 </cryptid>
